@@ -6,7 +6,6 @@ CREATE TABLE Policy (
 yearly', 'Monthly'))
 );
 
-policy)
 CREATE TABLE Customer (
     cno INT PRIMARY KEY,
     cname VARCHAR(50),
@@ -31,18 +30,14 @@ INSERT INTO Customer VALUES
 (105, 'Sita', 'Nashik', 'Vikas', 1),
 (106, 'Rohit', 'Pune', 'Sonia', 5);
 
-B. Queries (any 3)
-i. List details of all customers who live in Pune
 SELECT *
 FROM Customer
 WHERE city = 'Pune';
 
-ii. Display the average premium amount
 SELECT AVG(premium_amt) AS avg_premium
 
 FROM Policy;
 
-iii. Count customers who have taken ‘Jeevan Anand’ policy
 SELECT COUNT(*) AS customer_count
 FROM Customer
 WHERE pno = (
@@ -51,26 +46,21 @@ WHERE pno = (
     WHERE pname = 'Jeevan Anand'
 );
 
-iv. Increase premium amount for ‘Monthly’ policies by 10%
 UPDATE Policy
 SET premium_amt = premium_amt * 1.10
 WHERE policy_type = 'Monthly';
 
-v. Policy_type wise count of policies
 SELECT policy_type, COUNT(*) AS total_policies
 FROM Policy
 
 GROUP BY policy_type;
 
-C. Choice
-1. Policy_type with highest average premium amount
 SELECT policy_type
 FROM Policy
 GROUP BY policy_type
 ORDER BY AVG(premium_amt) DESC
 LIMIT 1;
 
-2. View: customer with highest number of policies
 CREATE VIEW MaxPoliciesCustomer AS
 SELECT cname, COUNT(*) AS total_policies
 FROM Customer

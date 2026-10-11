@@ -43,35 +43,25 @@ INSERT INTO Student_Teacher VALUES
 (2, 103, 'Science'),
 (1, 104, 'English');
 
-B. Queries (any 3)
-i. List the names of students from ‘Ahilyanagar’
 SELECT name
 FROM Student
 WHERE city = 'Ahilyanagar';
 
-ii. Count of teachers whose salary is between 40000 to 60000
 SELECT COUNT(*) AS teacher_count
 FROM Teacher
 WHERE salary BETWEEN 40000 AND 60000;
-
-iii. Change phone number of ‘Prof. Patil’
 
 UPDATE Teacher
 SET phone_no = '9822131226'
 WHERE tname = 'Prof. Patil';
 
-iv. List teachers sorted by name
 SELECT *
 FROM Teacher
 ORDER BY tname;
 
-v. Names of teachers with salary < 50000
 SELECT tname
 FROM Teacher
 WHERE salary < 50000;
-
-C. Choice
-1. Teachers who do not teach any subject taught by ‘Mr. Patil’
 
 SELECT tname
 FROM Teacher
@@ -87,7 +77,6 @@ WHERE tno NOT IN (
     )
 );
 
-2. Create a view: students who have taken ‘DBMS’ subject
 CREATE VIEW DBMS_Students AS
 SELECT S.rno, S.name, S.city
 FROM Student S

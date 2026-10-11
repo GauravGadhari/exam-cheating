@@ -13,47 +13,49 @@ CREATE TABLE Account (
 );
 
 INSERT INTO Customer VALUES (1, 'Sahil', 'Pune');
+
 INSERT INTO Customer VALUES (2, 'Rina', 'Mumbai');
+
 INSERT INTO Customer VALUES (3, 'Kiran', 'Pune');
+
 INSERT INTO Customer VALUES (4, 'Meera', 'Delhi');
+
 INSERT INTO Customer VALUES (5, 'Ankit', 'Pune');
 
 INSERT INTO Account VALUES (101, 'Saving', 50000, 1);
+
 INSERT INTO Account VALUES (102, 'Current', 150000, 2);
+
 INSERT INTO Account VALUES (103, 'Saving', 25000, 3);
+
 INSERT INTO Account VALUES (104, 'Current', 120000, 4);
+
 INSERT INTO Account VALUES (105, 'Saving', 70000, 5);
+
 INSERT INTO Account VALUES (106, 'Current', 200000, 1);
 
-i. Count the number of customers whose name contains substring “in”
 SELECT COUNT(*) AS customer_count
 FROM Customer
 
 WHERE cust_name LIKE '%in%';
 
-ii. Give the average balance of all Current accounts
 SELECT AVG(balance) AS avg_current_balance
 FROM Account
 WHERE acc_type = 'Current';
 
-iii. Display details of accounts in sorted order of balance
 SELECT *
 FROM Account
 ORDER BY balance;
 
-iv. Increase the balance of all accounts of customer named “Sahil” by Rs 10000
 UPDATE Account
 SET balance = balance + 10000
 WHERE cno = (
     SELECT cno FROM Customer WHERE cust_name = 'Sahil'
 );
 
-v. Add column “phone_no” to customer table
 ALTER TABLE Customer
 ADD COLUMN phone_no VARCHAR(15);
 
-Option 1: City-wise customer names having
-minimum balance (easy version)
 SELECT c.cust_city, c.cust_name, a.balance
 FROM Customer c
 JOIN Account a ON c.cno = a.cno
@@ -64,9 +66,6 @@ WHERE a.balance = (
     WHERE c2.cust_city = c.cust_city
 
 );
-
-Option 2: View for customers in Pune with maximum
-Saving balance (easy version)
 
 CREATE VIEW PuneMaxSaving AS
 SELECT c.cust_name, c.cust_city, a.balance

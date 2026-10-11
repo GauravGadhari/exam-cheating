@@ -40,40 +40,30 @@ INSERT INTO Student_Teacher VALUES
 (105, 202, 'Maths'),
 (103, 201, 'DBMS');
 
-B. Queries (any 3)
-i. Class-wise number of students
 SELECT s_class, COUNT(*) AS total_students
 FROM Student
 GROUP BY s_class;
 
-ii. All students in TY
 SELECT *
 FROM Student
 WHERE s_class = 'TY';
 
-iii. Count students who have taken Maths
 SELECT COUNT(DISTINCT sno) AS maths_students
 FROM Student_Teacher
 WHERE subject = 'Maths';
 
-iv. Delete record of student with sno = 105
-
 DELETE FROM Student
 WHERE sno = 105;
 
-v. Add designation column in teacher table
 ALTER TABLE Teacher
 ADD COLUMN designation VARCHAR(50);
 
-C. Choice
-1. Teachers with subjects & total number of students
 SELECT T.t_name, ST.subject, COUNT(DISTINCT ST.sno) AS
 total_students
 FROM Teacher T, Student_Teacher ST
 WHERE T.tno = ST.tno
 GROUP BY T.t_name, ST.subject;
 
-2. View: Teacher who teaches maximum number of subjects
 CREATE VIEW MaxSubjectsTeacher AS
 SELECT tno, COUNT(DISTINCT subject) AS subject_count
 FROM Student_Teacher

@@ -40,34 +40,26 @@ INSERT INTO Item_Supplier VALUES
 (2, 104, 230),
 (3, 104, 6800);
 
-B. Queries (any 3)
-i. Change quantity of item ‘Mouse’ to 80
 UPDATE Item
 SET quantity = 80
 WHERE name = 'Mouse';
 
-ii. Suppliers whose name begins with ‘M’
 SELECT *
 FROM Supplier
 WHERE name LIKE 'M%';
 
-iii. Total count of items
 SELECT COUNT(*) AS total_items
 FROM Item;
 
-iv. Suppliers not living in Pune
 SELECT name
 FROM Supplier
 WHERE city <> 'Pune';
 
-v. Items with quantity < 10
 SELECT name
 
 FROM Item
 WHERE quantity < 10;
 
-C. Choice
-1. Supplier who supplies Item with minimum rate
 SELECT S.name
 FROM Supplier S
 WHERE S.sno = (
@@ -76,7 +68,6 @@ WHERE S.sno = (
     WHERE rate = (SELECT MIN(rate) FROM Item_Supplier)
 );
 
-2. View: supplier-wise list of items
 CREATE VIEW Supplier_Item_List AS
 SELECT S.name AS supplier_name, I.name AS item_name, IS1.rate
 

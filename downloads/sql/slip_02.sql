@@ -27,33 +27,24 @@ INSERT INTO Employee VALUES
 (104, 'Kiran', 'Developer', 45000, 3),
 (105, 'Sonia', 'HR Executive', 28000, 1);
 
-B. Queries (any 3)
-i. Give a 5% raise in salary to all employees
 UPDATE Employee
 SET salary = salary * 1.05;
 
-ii. Display average salary of employees
 SELECT AVG(salary) AS avg_salary
 FROM Employee;
 
-iii. List details of all departments located at ‘Nashik’
 SELECT *
 FROM Department
 WHERE location = 'Nashik';
 
-iv. Display employees whose names end with ‘a’
 SELECT *
 FROM Employee
 WHERE ename LIKE '%a';
 
-v. Display the location of ‘HR’ department
 SELECT location
 FROM Department
 WHERE dname = 'HR';
 
-C. Choice
-
-1. Employees not working in departments located at ‘Delhi’
 SELECT *
 FROM Employee
 WHERE dno NOT IN (
@@ -62,7 +53,6 @@ WHERE dno NOT IN (
     WHERE location = 'Delhi'
 );
 
-2. Create a view: employees with salary greater than all employees in HR
 CREATE VIEW HighSalaryEmployees AS
 SELECT ename, salary
 FROM Employee
@@ -72,8 +62,6 @@ WHERE salary > ALL (
     JOIN Department D ON E.dno = D.dno
     WHERE D.dname = 'HR'
 );
-
-OR
 
 CREATE VIEW HighSalaryEmployees AS
 SELECT ename, salary

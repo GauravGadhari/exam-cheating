@@ -37,37 +37,27 @@ INSERT INTO Emp_Project VALUES
 (2, 102, 150),
 (3, 103, 90);
 
-B. Queries (any 3)
-i. Find the maximum budget
-
 SELECT MAX(budget) AS max_budget
 FROM Project;
 
-ii. Increase salary of all employees by 10%
 UPDATE Emp
 SET salary = salary * 1.10;
 
-iii. Count projects with duration > 100 hrs
 SELECT COUNT(DISTINCT pno) AS project_count
 FROM Emp_Project
 WHERE total_hours > 100;
 
-iv. Employees whose name ends with 'a'
 SELECT *
 FROM Emp
 WHERE ename LIKE '%a';
 
-v. Add column contact_number
 ALTER TABLE Emp
 ADD COLUMN contact_number VARCHAR(15);
 
-C. Choice
-1. Employees not working on any project
 SELECT ename
 FROM Emp
 WHERE eno NOT IN (SELECT eno FROM Emp_Project);
 
-2. View: Project with maximum hours
 CREATE VIEW MaxHoursProject AS
 SELECT P.pno, P.pname, P.budget, SUM(EP.total_hours) AS total_hours
 FROM Project P, Emp_Project EP
