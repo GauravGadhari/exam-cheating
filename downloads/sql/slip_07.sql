@@ -4,11 +4,13 @@ CREATE TABLE Item (
     quantity INT
 );
 
+
 CREATE TABLE Supplier (
     sno INT PRIMARY KEY,
     name VARCHAR(50),
     city VARCHAR(50)
 );
+
 
 CREATE TABLE Item_Supplier (
     itemno INT,
@@ -19,11 +21,13 @@ CREATE TABLE Item_Supplier (
     FOREIGN KEY (sno) REFERENCES Supplier(sno)
 );
 
+
 INSERT INTO Item VALUES
 (1, 'Keyboard', 50),
 (2, 'Mouse', 40),
 (3, 'Monitor', 15),
 (4, 'USB Cable', 5);
+
 
 INSERT INTO Supplier VALUES
 (101, 'Mahesh Traders', 'Pune'),
@@ -31,6 +35,7 @@ INSERT INTO Supplier VALUES
 (102, 'Meera Electronics', 'Mumbai'),
 (103, 'Raj Suppliers', 'Nashik'),
 (104, 'Mohan Distributors', 'Nagpur');
+
 
 INSERT INTO Item_Supplier VALUES
 (1, 101, 500),
@@ -40,25 +45,35 @@ INSERT INTO Item_Supplier VALUES
 (2, 104, 230),
 (3, 104, 6800);
 
+
+
+
 UPDATE Item
 SET quantity = 80
 WHERE name = 'Mouse';
+
 
 SELECT *
 FROM Supplier
 WHERE name LIKE 'M%';
 
+
 SELECT COUNT(*) AS total_items
 FROM Item;
+
 
 SELECT name
 FROM Supplier
 WHERE city <> 'Pune';
 
+
 SELECT name
 
 FROM Item
 WHERE quantity < 10;
+
+
+
 
 SELECT S.name
 FROM Supplier S
@@ -67,6 +82,7 @@ WHERE S.sno = (
     FROM Item_Supplier
     WHERE rate = (SELECT MIN(rate) FROM Item_Supplier)
 );
+
 
 CREATE VIEW Supplier_Item_List AS
 SELECT S.name AS supplier_name, I.name AS item_name, IS1.rate

@@ -4,11 +4,13 @@ CREATE TABLE Student (
     s_class VARCHAR(5) CHECK (s_class IN ('FY','SY','TY'))
 );
 
+
 CREATE TABLE Teacher (
     tno INT PRIMARY KEY,
     t_name VARCHAR(50),
     yrs_experience INT
 );
+
 
 CREATE TABLE Student_Teacher (
     sno INT,
@@ -19,6 +21,7 @@ CREATE TABLE Student_Teacher (
     FOREIGN KEY (tno) REFERENCES Teacher(tno)
 );
 
+
 INSERT INTO Student VALUES
 (101, 'Ravi', 'FY'),
 
@@ -27,10 +30,12 @@ INSERT INTO Student VALUES
 (104, 'Sonal', 'TY'),
 (105, 'Kiran', 'SY');
 
+
 INSERT INTO Teacher VALUES
 (201, 'Prof. Patil', 10),
 (202, 'Prof. Mehta', 7),
 (203, 'Prof. Sharma', 12);
+
 
 INSERT INTO Student_Teacher VALUES
 (101, 201, 'DBMS'),
@@ -40,29 +45,40 @@ INSERT INTO Student_Teacher VALUES
 (105, 202, 'Maths'),
 (103, 201, 'DBMS');
 
+
+
+
 SELECT s_class, COUNT(*) AS total_students
 FROM Student
 GROUP BY s_class;
+
 
 SELECT *
 FROM Student
 WHERE s_class = 'TY';
 
+
 SELECT COUNT(DISTINCT sno) AS maths_students
 FROM Student_Teacher
 WHERE subject = 'Maths';
 
+
 DELETE FROM Student
 WHERE sno = 105;
 
+
 ALTER TABLE Teacher
 ADD COLUMN designation VARCHAR(50);
+
+
+
 
 SELECT T.t_name, ST.subject, COUNT(DISTINCT ST.sno) AS
 total_students
 FROM Teacher T, Student_Teacher ST
 WHERE T.tno = ST.tno
 GROUP BY T.t_name, ST.subject;
+
 
 CREATE VIEW MaxSubjectsTeacher AS
 SELECT tno, COUNT(DISTINCT subject) AS subject_count

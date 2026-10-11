@@ -4,6 +4,7 @@ CREATE TABLE Customer (
     cust_city VARCHAR(50)
 );
 
+
 CREATE TABLE Account (
     acctno INT PRIMARY KEY,
     acct_type VARCHAR(10) CHECK (acct_type IN ('saving','current')),
@@ -13,11 +14,13 @@ CREATE TABLE Account (
     FOREIGN KEY (custno) REFERENCES Customer(custno)
 );
 
+
 INSERT INTO Customer VALUES
 (1, 'Ravi', 'Pune'),
 (2, 'Meena', 'Mumbai'),
 (3, 'Sanjay', 'Delhi'),
 (4, 'Ramnath', 'Nashik');
+
 
 INSERT INTO Account VALUES
 (101, 'saving', 7000, 'M.G.Road', 1),
@@ -26,30 +29,41 @@ INSERT INTO Account VALUES
 (104, 'saving', 15000, 'Camp', 1),
 (105, 'current', 9000, 'M.G.Road', 4);
 
+
+
+
 SELECT *
 FROM Account
 WHERE acct_type = 'saving'
   AND balance > 5000;
 
+
 SELECT COUNT(*) AS pune_customers
 FROM Customer
 WHERE cust_city = 'Pune';
+
 
 SELECT SUM(balance) AS total_balance
 FROM Account
 WHERE branch_name = 'M.G.Road';
 
+
 DELETE FROM Customer
 WHERE cust_name = 'Ramnath';
+
 
 UPDATE Customer
 SET cust_city = 'Pune'
 WHERE cust_name = 'Sanjay';
 
+
+
+
 SELECT C.cust_city, COUNT(A.acctno) AS total_accounts
 FROM Customer C, Account A
 WHERE C.custno = A.custno
 GROUP BY C.cust_city;
+
 
 CREATE VIEW AccountCustomerView AS
 SELECT A.acctno, A.acct_type, A.balance, A.branch_name,

@@ -5,6 +5,7 @@ CREATE TABLE Room (
     charges NUMERIC(10,2)
 );
 
+
 CREATE TABLE Guest (
     Guestcode INT PRIMARY KEY,
     Gname VARCHAR(50),
@@ -13,11 +14,13 @@ CREATE TABLE Guest (
     FOREIGN KEY (roomno) REFERENCES Room(roomno)
 );
 
+
 INSERT INTO Room VALUES
 (1, 'Deluxe1', 'AC', 8000),
 (2, 'Deluxe2', 'NonAC', 6000),
 (3, 'Suite1', 'AC', 12000),
 (4, 'Suite2', 'NonAC', 15000);
+
 
 INSERT INTO Guest VALUES
 (101, 'Ravi', 'Pune', 1),
@@ -25,24 +28,34 @@ INSERT INTO Guest VALUES
 (103, 'Arjun', 'Delhi', 3),
 (104, 'Kiran', 'Bangalore', 4);
 
+
+
+
 SELECT *
 FROM Room
 WHERE charges BETWEEN 5000 AND 10000;
+
 
 SELECT Gname, city
 FROM Guest
 ORDER BY city;
 
+
 SELECT MIN(charges) AS min_charges
 FROM Room;
+
 
 UPDATE Room
 SET charges = charges * 1.15
 WHERE room_type = 'AC';
 
+
 SELECT room_name
 FROM Room
 WHERE room_type = 'NonAC' AND charges > 10000;
+
+
+
 
 SELECT Gname
 FROM Guest
@@ -51,6 +64,7 @@ WHERE roomno = (
     FROM Room
     WHERE charges = (SELECT MAX(charges) FROM Room)
 );
+
 
 CREATE VIEW NonAC_View AS
 SELECT room_name, charges

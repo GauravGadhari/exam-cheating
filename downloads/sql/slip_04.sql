@@ -6,6 +6,7 @@ CREATE TABLE Policy (
 yearly', 'Monthly'))
 );
 
+
 CREATE TABLE Customer (
     cno INT PRIMARY KEY,
     cname VARCHAR(50),
@@ -15,12 +16,14 @@ CREATE TABLE Customer (
     FOREIGN KEY (pno) REFERENCES Policy(pno)
 );
 
+
 INSERT INTO Policy VALUES
 (1, 'Jeevan Anand', 25000, 'Yearly'),
 (2, 'Health Plus', 12000, 'Half-yearly'),
 (3, 'Child Secure', 2000, 'Monthly'),
 (4, 'Life Secure', 5000, 'Monthly'),
 (5, 'Retirement Plan', 30000, 'Yearly');
+
 
 INSERT INTO Customer VALUES
 (101, 'Ravi', 'Pune', 'Ajay', 1),
@@ -30,13 +33,18 @@ INSERT INTO Customer VALUES
 (105, 'Sita', 'Nashik', 'Vikas', 1),
 (106, 'Rohit', 'Pune', 'Sonia', 5);
 
+
+
+
 SELECT *
 FROM Customer
 WHERE city = 'Pune';
 
+
 SELECT AVG(premium_amt) AS avg_premium
 
 FROM Policy;
+
 
 SELECT COUNT(*) AS customer_count
 FROM Customer
@@ -46,20 +54,26 @@ WHERE pno = (
     WHERE pname = 'Jeevan Anand'
 );
 
+
 UPDATE Policy
 SET premium_amt = premium_amt * 1.10
 WHERE policy_type = 'Monthly';
+
 
 SELECT policy_type, COUNT(*) AS total_policies
 FROM Policy
 
 GROUP BY policy_type;
 
+
+
+
 SELECT policy_type
 FROM Policy
 GROUP BY policy_type
 ORDER BY AVG(premium_amt) DESC
 LIMIT 1;
+
 
 CREATE VIEW MaxPoliciesCustomer AS
 SELECT cname, COUNT(*) AS total_policies
