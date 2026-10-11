@@ -22,3 +22,4 @@ Clean, minimal, verified code solutions and viva guides for Pune University (SPP
 ### 🌐 Quick Links
 - **Live Web App:** [https://gauravgadhari.github.io/exam-cheating/](https://gauravgadhari.github.io/exam-cheating/)
 - **Master ZIP Download:** [downloads/all_practicals.zip](downloads/all_practicals.zip)
+- **Master PDF Guide:** [downloads/DS_DBMS_Master_Practical_Guide.pdf](downloads/DS_DBMS_Master_Practical_Guide.pdf)
