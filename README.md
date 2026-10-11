@@ -1,5 +1,10 @@
 # exam-cheating
 
+## 🚀 Live Portal
+👉 **[https://gauravgadhari.github.io/exam-cheating/](https://gauravgadhari.github.io/exam-cheating/)**
+
+---
+
 ## SPPU CS-203 Data Structures & DBMS Practical Hub
 
 Clean, minimal, verified code solutions for Pune University (SPPU) Sem III CS-203 Practical Exam.
@@ -11,5 +16,6 @@ Clean, minimal, verified code solutions for Pune University (SPPU) Sem III CS-20
 - **Editor Themes:** Includes VS Code Dark+, One Dark Pro, Dracula, Monokai, and GitHub Dark syntax highlighting.
 - **1-Click Copy & Downloads:** Instant copy for C and SQL queries, plus individual `.c` and `.sql` file downloads and complete `.zip` download.
 
-### 🚀 Usage
-Open `index.html` locally or deploy via GitHub Pages to access the hub online.
+### 🌐 Quick Links
+- **Live Web App:** [https://gauravgadhari.github.io/exam-cheating/](https://gauravgadhari.github.io/exam-cheating/)
+- **Master ZIP Download:** [downloads/all_practicals.zip](downloads/all_practicals.zip)
